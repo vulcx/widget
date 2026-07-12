@@ -1,8 +1,8 @@
-import { ArgyrosSwapElement } from "./argyros-swap";
+import { VulcxSwapElement } from "./vulcx-swap";
 
-if (typeof customElements !== "undefined" && !customElements.get("argyros-swap")) {
-  customElements.define("argyros-swap", ArgyrosSwapElement);
+if (typeof customElements !== "undefined" && !customElements.get("vulcx-swap")) {
+  customElements.define("vulcx-swap", VulcxSwapElement);
 }
 
-export { ArgyrosSwapElement };
+export { VulcxSwapElement };
 export type { WidgetState, WidgetStatus, TokenInfo } from "./state/store";

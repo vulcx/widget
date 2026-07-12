@@ -1,6 +1,6 @@
-import { QuoteResponse } from '@argyros/sdk';
+import { QuoteResponse } from '@vulcx/sdk';
 
-declare class ArgyrosSwapElement extends HTMLElement {
+declare class VulcxSwapElement extends HTMLElement {
     private shadow;
     private sdk;
     private store;
@@ -74,5 +74,5 @@ interface WidgetState {
     selectorSearch: string;
 }
 
-export { ArgyrosSwapElement };
+export { VulcxSwapElement };
 export type { TokenInfo, WidgetState, WidgetStatus };

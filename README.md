@@ -1,17 +1,17 @@
-# @argyros/widget
+# @vulcx/widget
 
-Embeddable swap widget for the Argyros DEX aggregator. Framework-agnostic Web Component that works in React, Vue, Svelte, Angular, or plain HTML.
+Embeddable swap widget for the Vulcx DEX aggregator. Framework-agnostic Web Component that works in React, Vue, Svelte, Angular, or plain HTML.
 
 ## Install
 
 ```bash
-npm install @argyros/widget
+npm install @vulcx/widget
 ```
 
 Or via CDN (no build step needed):
 
 ```html
-<script src="https://cdn.argyros.trade/argyros-widget.umd.js"></script>
+<script src="https://cdn.vulcx.xyz/vulcx-widget.umd.js"></script>
 ```
 
 ## Usage
@@ -19,26 +19,26 @@ Or via CDN (no build step needed):
 ### HTML / CDN
 
 ```html
-<script src="https://cdn.argyros.trade/argyros-widget.umd.js"></script>
+<script src="https://cdn.vulcx.xyz/vulcx-widget.umd.js"></script>
 
-<argyros-swap
-  api-key="argy_your_api_key"
+<vulcx-swap
+  api-key="vulcx_your_api_key"
   chain="solana"
   default-input-mint="So11111111111111111111111111111111111111112"
   default-output-mint="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
   theme="dark"
-></argyros-swap>
+></vulcx-swap>
 ```
 
 ### React
 
 ```tsx
-import "@argyros/widget";
+import "@vulcx/widget";
 
 function App() {
   return (
-    <argyros-swap
-      api-key="argy_your_api_key"
+    <vulcx-swap
+      api-key="vulcx_your_api_key"
       chain="solana"
       default-input-mint="So11111111111111111111111111111111111111112"
       default-output-mint="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
@@ -53,7 +53,7 @@ For TypeScript, add to your `global.d.ts`:
 ```typescript
 declare namespace JSX {
   interface IntrinsicElements {
-    "argyros-swap": React.DetailedHTMLProps<
+    "vulcx-swap": React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLElement> & {
         "api-key"?: string;
         chain?: string;
@@ -71,8 +71,8 @@ declare namespace JSX {
 
 ```vue
 <template>
-  <argyros-swap
-    api-key="argy_your_api_key"
+  <vulcx-swap
+    api-key="vulcx_your_api_key"
     chain="solana"
     default-input-mint="So11111111111111111111111111111111111111112"
     default-output-mint="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
@@ -83,7 +83,7 @@ declare namespace JSX {
 </template>
 
 <script setup>
-import "@argyros/widget";
+import "@vulcx/widget";
 
 function onQuote(e) {
   console.log("Quote:", e.detail);
@@ -104,13 +104,13 @@ export default function SwapWidget() {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    import("@argyros/widget");
+    import("@vulcx/widget");
   }, []);
 
   return (
-    <argyros-swap
+    <vulcx-swap
       ref={ref}
-      api-key="argy_your_api_key"
+      api-key="vulcx_your_api_key"
       chain="solana"
       theme="dark"
     />
@@ -144,7 +144,7 @@ export default function SwapWidget() {
 Set the wallet address programmatically:
 
 ```javascript
-const widget = document.querySelector("argyros-swap");
+const widget = document.querySelector("vulcx-swap");
 widget.setWallet("9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM");
 ```
 
@@ -162,10 +162,10 @@ widget.addEventListener("connect-wallet", async () => {
 Override CSS custom properties on the host element:
 
 ```css
-argyros-swap {
-  --argyros-bg: #0d0d12;
-  --argyros-accent: #00ff88;
-  --argyros-radius: 20px;
+vulcx-swap {
+  --vulcx-bg: #0d0d12;
+  --vulcx-accent: #00ff88;
+  --vulcx-radius: 20px;
 }
 ```
 
@@ -173,12 +173,12 @@ Available CSS variables:
 
 | Variable                    | Default (dark) | Description        |
 | --------------------------- | -------------- | ------------------ |
-| `--argyros-bg`              | `#0a0a0f`      | Background         |
-| `--argyros-surface`         | `#141419`      | Card/panel bg      |
-| `--argyros-surface-hover`   | `#1c1c24`      | Hover state        |
-| `--argyros-border`          | `#2a2a35`      | Borders            |
-| `--argyros-text`            | `#e8e8ed`      | Primary text       |
-| `--argyros-text-secondary`  | `#8b8b9a`      | Secondary text     |
-| `--argyros-accent`          | `#c8ff00`      | Accent / CTA       |
-| `--argyros-error`           | `#ff4d6a`      | Error color        |
-| `--argyros-radius`          | `16px`         | Border radius      |
+| `--vulcx-bg`              | `#0a0a0f`      | Background         |
+| `--vulcx-surface`         | `#141419`      | Card/panel bg      |
+| `--vulcx-surface-hover`   | `#1c1c24`      | Hover state        |
+| `--vulcx-border`          | `#2a2a35`      | Borders            |
+| `--vulcx-text`            | `#e8e8ed`      | Primary text       |
+| `--vulcx-text-secondary`  | `#8b8b9a`      | Secondary text     |
+| `--vulcx-accent`          | `#c8ff00`      | Accent / CTA       |
+| `--vulcx-error`           | `#ff4d6a`      | Error color        |
+| `--vulcx-radius`          | `16px`         | Border radius      |

@@ -1,4 +1,4 @@
-export declare class ArgyrosSwapElement extends HTMLElement {
+export declare class VulcxSwapElement extends HTMLElement {
     private shadow;
     private sdk;
     private store;

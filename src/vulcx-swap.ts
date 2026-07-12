@@ -1,5 +1,5 @@
-import { ArgyrosSDK } from "@argyros/sdk";
-import type { Chain, QuoteResponse, SwapResponse } from "@argyros/sdk";
+import { VulcxSDK } from "@vulcx/sdk";
+import type { Chain, QuoteResponse, SwapResponse } from "@vulcx/sdk";
 import { WIDGET_CSS } from "./ui/styles";
 import { Store, createInitialState } from "./state/store";
 import type { WidgetState, TokenInfo, SelectorTarget } from "./state/store";
@@ -21,9 +21,9 @@ const POPULAR_MINTS = [
   "uSd2czE61Evaf76RNbq4KPpXnkiL3irdzgLFUMe3NoG",
 ];
 
-export class ArgyrosSwapElement extends HTMLElement {
+export class VulcxSwapElement extends HTMLElement {
   private shadow: ShadowRoot;
-  private sdk!: ArgyrosSDK;
+  private sdk!: VulcxSDK;
   private store!: Store;
   private debounceTimer: ReturnType<typeof setTimeout> | null = null;
   private unsubscribe: (() => void) | null = null;
@@ -52,7 +52,7 @@ export class ArgyrosSwapElement extends HTMLElement {
     const outputMint = this.getAttribute("default-output-mint") || "";
     this.rpcUrl = this.getAttribute("rpc-url") || DEFAULT_RPC;
 
-    this.sdk = new ArgyrosSDK({ apiKey, chain, baseUrl });
+    this.sdk = new VulcxSDK({ apiKey, chain, baseUrl });
     this.store = new Store(createInitialState(inputMint, outputMint));
     this.unsubscribe = this.store.subscribe(() => this.update());
     this.mount();
@@ -71,7 +71,7 @@ export class ArgyrosSwapElement extends HTMLElement {
     const chain = (this.getAttribute("chain") as Chain) || "solana";
     const baseUrl = this.getAttribute("base-url") || undefined;
     this.rpcUrl = this.getAttribute("rpc-url") || DEFAULT_RPC;
-    this.sdk = new ArgyrosSDK({ apiKey, chain, baseUrl });
+    this.sdk = new VulcxSDK({ apiKey, chain, baseUrl });
   }
 
   private emit(name: string, detail: unknown): void {
@@ -80,7 +80,7 @@ export class ArgyrosSwapElement extends HTMLElement {
 
   private async loadTokenList(): Promise<void> {
     try {
-      const baseUrl = this.getAttribute("base-url") || "https://api.argyros.xyz";
+      const baseUrl = this.getAttribute("base-url") || "https://api.vulcx.xyz";
       const res = await fetch(`${baseUrl}/api/v1/tokens`);
       if (!res.ok) return;
       const data = await res.json();

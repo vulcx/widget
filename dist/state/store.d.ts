@@ -1,4 +1,4 @@
-import type { QuoteResponse } from "@argyros/sdk";
+import type { QuoteResponse } from "@vulcx/sdk";
 export type WidgetStatus = "idle" | "quoting" | "swapping" | "success" | "error";
 export interface TokenInfo {
     mint: string;

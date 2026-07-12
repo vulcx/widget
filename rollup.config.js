@@ -9,9 +9,9 @@ export default [
       { file: "dist/index.cjs.js", format: "cjs", sourcemap: true },
       { file: "dist/index.esm.js", format: "es", sourcemap: true },
       {
-        file: "dist/argyros-widget.umd.js",
+        file: "dist/vulcx-widget.umd.js",
         format: "umd",
-        name: "ArgyrosWidget",
+        name: "VulcxWidget",
         sourcemap: true,
       },
     ],

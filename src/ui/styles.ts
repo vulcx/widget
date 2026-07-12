@@ -8,22 +8,22 @@ export const WIDGET_CSS = `
 :host {
   ${defaultVars}
   display: block;
-  font-family: var(--argyros-font);
-  color: var(--argyros-text);
+  font-family: var(--vulcx-font);
+  color: var(--vulcx-text);
   box-sizing: border-box;
 }
 
 :host([theme="light"]) {
-  --argyros-bg: #ffffff;
-  --argyros-surface: #f5f5f7;
-  --argyros-surface-hover: #ebebef;
-  --argyros-border: #d4d4dc;
-  --argyros-text: #1a1a2e;
-  --argyros-text-secondary: #6b6b7a;
-  --argyros-text-dim: #9a9aaa;
-  --argyros-accent: #1a1a2e;
-  --argyros-accent-hover: #2d2d45;
-  --argyros-badge-bg: #e8e8ed;
+  --vulcx-bg: #ffffff;
+  --vulcx-surface: #f5f5f7;
+  --vulcx-surface-hover: #ebebef;
+  --vulcx-border: #d4d4dc;
+  --vulcx-text: #1a1a2e;
+  --vulcx-text-secondary: #6b6b7a;
+  --vulcx-text-dim: #9a9aaa;
+  --vulcx-accent: #1a1a2e;
+  --vulcx-accent-hover: #2d2d45;
+  --vulcx-badge-bg: #e8e8ed;
 }
 
 *, *::before, *::after {
@@ -33,8 +33,8 @@ export const WIDGET_CSS = `
 }
 
 .swap-container {
-  background: var(--argyros-bg);
-  border-radius: var(--argyros-radius);
+  background: var(--vulcx-bg);
+  border-radius: var(--vulcx-radius);
   padding: 12px;
   max-width: 460px;
   width: 100%;
@@ -42,15 +42,15 @@ export const WIDGET_CSS = `
 
 /* ── Token Panel ── */
 .token-panel {
-  background: var(--argyros-surface);
-  border-radius: var(--argyros-radius-sm);
+  background: var(--vulcx-surface);
+  border-radius: var(--vulcx-radius-sm);
   padding: 18px 18px 14px;
   margin-bottom: 4px;
 }
 
 .token-panel-label {
   font-size: 13px;
-  color: var(--argyros-text-secondary);
+  color: var(--vulcx-text-secondary);
   margin-bottom: 10px;
 }
 
@@ -68,13 +68,13 @@ export const WIDGET_CSS = `
   outline: none;
   font-size: 36px;
   font-weight: 500;
-  color: var(--argyros-text);
-  font-family: var(--argyros-font);
+  color: var(--vulcx-text);
+  font-family: var(--vulcx-font);
   min-width: 0;
 }
 
 .amount-input::placeholder {
-  color: var(--argyros-text-dim);
+  color: var(--vulcx-text-dim);
   font-weight: 400;
 }
 
@@ -87,21 +87,21 @@ export const WIDGET_CSS = `
   display: flex;
   align-items: center;
   gap: 8px;
-  background: var(--argyros-badge-bg);
-  border: 1px solid var(--argyros-border);
+  background: var(--vulcx-badge-bg);
+  border: 1px solid var(--vulcx-border);
   border-radius: 24px;
   padding: 6px 14px 6px 6px;
   cursor: pointer;
   font-size: 17px;
   font-weight: 700;
-  color: var(--argyros-text);
+  color: var(--vulcx-text);
   white-space: nowrap;
   transition: background 0.15s;
   height: 44px;
 }
 
 .token-badge:hover {
-  background: var(--argyros-surface-hover);
+  background: var(--vulcx-surface-hover);
 }
 
 .token-icon {
@@ -116,7 +116,7 @@ export const WIDGET_CSS = `
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: var(--argyros-border);
+  background: var(--vulcx-border);
   flex-shrink: 0;
 }
 
@@ -130,7 +130,7 @@ export const WIDGET_CSS = `
 /* ── USD Value ── */
 .usd-value {
   font-size: 13px;
-  color: var(--argyros-text-secondary);
+  color: var(--vulcx-text-secondary);
   margin-top: 6px;
   font-family: 'SF Mono', 'Fira Code', monospace;
 }
@@ -142,7 +142,7 @@ export const WIDGET_CSS = `
   align-items: center;
   margin-top: 10px;
   padding-top: 10px;
-  border-top: 1px solid var(--argyros-border);
+  border-top: 1px solid var(--vulcx-border);
 }
 
 .balance-label {
@@ -150,7 +150,7 @@ export const WIDGET_CSS = `
   align-items: center;
   gap: 6px;
   font-size: 13px;
-  color: var(--argyros-text-secondary);
+  color: var(--vulcx-text-secondary);
 }
 
 .balance-label svg {
@@ -169,17 +169,17 @@ export const WIDGET_CSS = `
   font-weight: 600;
   padding: 4px 12px;
   border-radius: 8px;
-  border: 1px solid var(--argyros-border);
-  background: var(--argyros-surface-hover);
-  color: var(--argyros-text-secondary);
+  border: 1px solid var(--vulcx-border);
+  background: var(--vulcx-surface-hover);
+  color: var(--vulcx-text-secondary);
   cursor: pointer;
-  font-family: var(--argyros-font);
+  font-family: var(--vulcx-font);
   transition: background 0.15s, color 0.15s;
 }
 
 .half-max-btn:hover {
-  background: var(--argyros-border);
-  color: var(--argyros-text);
+  background: var(--vulcx-border);
+  color: var(--vulcx-text);
 }
 
 /* ── Swap Direction ── */
@@ -195,9 +195,9 @@ export const WIDGET_CSS = `
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border: 4px solid var(--argyros-bg);
-  background: var(--argyros-surface);
-  color: var(--argyros-text);
+  border: 4px solid var(--vulcx-bg);
+  background: var(--vulcx-surface);
+  color: var(--vulcx-text);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -206,7 +206,7 @@ export const WIDGET_CSS = `
 }
 
 .swap-direction-btn:hover {
-  background: var(--argyros-surface-hover);
+  background: var(--vulcx-surface-hover);
   transform: rotate(180deg);
 }
 
@@ -220,20 +220,20 @@ export const WIDGET_CSS = `
   width: 100%;
   padding: 18px;
   border: none;
-  border-radius: var(--argyros-radius-sm);
-  background: var(--argyros-accent);
+  border-radius: var(--vulcx-radius-sm);
+  background: var(--vulcx-accent);
   color: #0a0a0f;
   font-size: 17px;
   font-weight: 700;
   cursor: pointer;
   margin-top: 10px;
-  font-family: var(--argyros-font);
+  font-family: var(--vulcx-font);
   transition: background 0.15s, opacity 0.15s;
   letter-spacing: -0.2px;
 }
 
 .swap-btn:hover:not(:disabled) {
-  background: var(--argyros-accent-hover);
+  background: var(--vulcx-accent-hover);
 }
 
 .swap-btn:disabled {
@@ -248,24 +248,24 @@ export const WIDGET_CSS = `
   gap: 10px;
   margin-top: 10px;
   padding: 10px 14px;
-  background: var(--argyros-surface);
-  border-radius: var(--argyros-radius-sm);
+  background: var(--vulcx-surface);
+  border-radius: var(--vulcx-radius-sm);
   font-size: 13px;
-  color: var(--argyros-text-secondary);
+  color: var(--vulcx-text-secondary);
   cursor: pointer;
   transition: background 0.15s;
   position: relative;
 }
 
 .quote-bar:hover {
-  background: var(--argyros-surface-hover);
+  background: var(--vulcx-surface-hover);
 }
 
 .quote-bar-tag {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: var(--argyros-accent);
+  color: var(--vulcx-accent);
   font-weight: 600;
   flex-shrink: 0;
 }
@@ -278,11 +278,11 @@ export const WIDGET_CSS = `
 .quote-bar-fee {
   padding: 2px 8px;
   border-radius: 6px;
-  background: var(--argyros-badge-bg);
-  border: 1px solid var(--argyros-border);
+  background: var(--vulcx-badge-bg);
+  border: 1px solid var(--vulcx-border);
   font-size: 12px;
   font-weight: 600;
-  color: var(--argyros-text);
+  color: var(--vulcx-text);
   flex-shrink: 0;
 }
 
@@ -293,37 +293,37 @@ export const WIDGET_CSS = `
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 12px;
-  color: var(--argyros-text-secondary);
+  color: var(--vulcx-text-secondary);
 }
 
 .quote-bar-info {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1.5px solid var(--argyros-border);
+  border: 1.5px solid var(--vulcx-border);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: var(--argyros-text-dim);
+  color: var(--vulcx-text-dim);
   font-size: 12px;
   font-weight: 700;
   transition: border-color 0.15s, color 0.15s;
 }
 
 .quote-bar:hover .quote-bar-info {
-  border-color: var(--argyros-text-secondary);
-  color: var(--argyros-text);
+  border-color: var(--vulcx-text-secondary);
+  color: var(--vulcx-text);
 }
 
 /* ── Quote Detail Panel ── */
 .quote-detail {
   margin-top: 6px;
   padding: 12px 14px;
-  background: var(--argyros-surface);
-  border-radius: var(--argyros-radius-sm);
+  background: var(--vulcx-surface);
+  border-radius: var(--vulcx-radius-sm);
   font-size: 12px;
-  color: var(--argyros-text-secondary);
+  color: var(--vulcx-text-secondary);
 }
 
 .quote-detail-row {
@@ -337,11 +337,11 @@ export const WIDGET_CSS = `
 }
 
 .impact-warning {
-  color: var(--argyros-warning);
+  color: var(--vulcx-warning);
 }
 
 .impact-high {
-  color: var(--argyros-error);
+  color: var(--vulcx-error);
 }
 
 /* ── Status Messages ── */
@@ -350,8 +350,8 @@ export const WIDGET_CSS = `
   padding: 10px 14px;
   background: rgba(255, 77, 106, 0.08);
   border: 1px solid rgba(255, 77, 106, 0.15);
-  border-radius: var(--argyros-radius-sm);
-  color: var(--argyros-error);
+  border-radius: var(--vulcx-radius-sm);
+  color: var(--vulcx-error);
   font-size: 13px;
 }
 
@@ -360,8 +360,8 @@ export const WIDGET_CSS = `
   padding: 10px 14px;
   background: rgba(0, 214, 143, 0.08);
   border: 1px solid rgba(0, 214, 143, 0.15);
-  border-radius: var(--argyros-radius-sm);
-  color: var(--argyros-success);
+  border-radius: var(--vulcx-radius-sm);
+  color: var(--vulcx-success);
   font-size: 13px;
 }
 
@@ -369,7 +369,7 @@ export const WIDGET_CSS = `
   display: inline-block;
   width: 16px;
   height: 16px;
-  border: 2px solid var(--argyros-text-secondary);
+  border: 2px solid var(--vulcx-text-secondary);
   border-top-color: transparent;
   border-radius: 50%;
   animation: spin 0.6s linear infinite;
@@ -394,9 +394,9 @@ export const WIDGET_CSS = `
 }
 
 .modal-panel {
-  background: var(--argyros-surface);
-  border: 1px solid var(--argyros-border);
-  border-radius: var(--argyros-radius);
+  background: var(--vulcx-surface);
+  border: 1px solid var(--vulcx-border);
+  border-radius: var(--vulcx-radius);
   width: 420px;
   max-width: 95vw;
   max-height: 520px;
@@ -414,7 +414,7 @@ export const WIDGET_CSS = `
   height: 28px;
   border: none;
   background: transparent;
-  color: var(--argyros-text-secondary);
+  color: var(--vulcx-text-secondary);
   cursor: pointer;
   font-size: 20px;
   display: flex;
@@ -425,29 +425,29 @@ export const WIDGET_CSS = `
 }
 
 .modal-close:hover {
-  background: var(--argyros-surface-hover);
-  color: var(--argyros-text);
+  background: var(--vulcx-surface-hover);
+  color: var(--vulcx-text);
 }
 
 .modal-search {
   margin: 16px 16px 0;
   padding: 14px 16px;
-  background: var(--argyros-bg);
-  border: 1px solid var(--argyros-border);
-  border-radius: var(--argyros-radius-sm);
-  color: var(--argyros-text);
+  background: var(--vulcx-bg);
+  border: 1px solid var(--vulcx-border);
+  border-radius: var(--vulcx-radius-sm);
+  color: var(--vulcx-text);
   font-size: 15px;
-  font-family: var(--argyros-font);
+  font-family: var(--vulcx-font);
   outline: none;
   transition: border-color 0.15s;
 }
 
 .modal-search::placeholder {
-  color: var(--argyros-text-dim);
+  color: var(--vulcx-text-dim);
 }
 
 .modal-search:focus {
-  border-color: var(--argyros-text-secondary);
+  border-color: var(--vulcx-text-secondary);
 }
 
 .popular-chips {
@@ -463,20 +463,20 @@ export const WIDGET_CSS = `
   gap: 6px;
   padding: 6px 14px 6px 6px;
   border-radius: 20px;
-  border: 1px solid var(--argyros-border);
-  background: var(--argyros-bg);
-  color: var(--argyros-text);
+  border: 1px solid var(--vulcx-border);
+  background: var(--vulcx-bg);
+  color: var(--vulcx-text);
   font-size: 14px;
   font-weight: 600;
-  font-family: var(--argyros-font);
+  font-family: var(--vulcx-font);
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
   white-space: nowrap;
 }
 
 .popular-chip:hover {
-  background: var(--argyros-surface-hover);
-  border-color: var(--argyros-text-secondary);
+  background: var(--vulcx-surface-hover);
+  border-color: var(--vulcx-text-secondary);
 }
 
 .popular-chip img {
@@ -500,7 +500,7 @@ export const WIDGET_CSS = `
 }
 
 .token-list::-webkit-scrollbar-thumb {
-  background: var(--argyros-border);
+  background: var(--vulcx-border);
   border-radius: 2px;
 }
 
@@ -515,7 +515,7 @@ export const WIDGET_CSS = `
 }
 
 .token-list-item:hover {
-  background: var(--argyros-surface-hover);
+  background: var(--vulcx-surface-hover);
 }
 
 .tli-icon {
@@ -530,7 +530,7 @@ export const WIDGET_CSS = `
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--argyros-border);
+  background: var(--vulcx-border);
   flex-shrink: 0;
 }
 
@@ -542,12 +542,12 @@ export const WIDGET_CSS = `
 .tli-symbol {
   font-size: 16px;
   font-weight: 700;
-  color: var(--argyros-text);
+  color: var(--vulcx-text);
 }
 
 .tli-name {
   font-size: 12px;
-  color: var(--argyros-text-secondary);
+  color: var(--vulcx-text-secondary);
   margin-top: 1px;
 }
 
@@ -556,7 +556,7 @@ export const WIDGET_CSS = `
   align-items: center;
   gap: 4px;
   font-size: 11px;
-  color: var(--argyros-text-dim);
+  color: var(--vulcx-text-dim);
   margin-top: 2px;
 }
 
@@ -575,19 +575,19 @@ export const WIDGET_CSS = `
 .tli-balance-amount {
   font-size: 15px;
   font-weight: 600;
-  color: var(--argyros-text);
+  color: var(--vulcx-text);
 }
 
 .tli-balance-usd {
   font-size: 12px;
-  color: var(--argyros-text-secondary);
+  color: var(--vulcx-text-secondary);
   margin-top: 1px;
 }
 
 .token-list-empty {
   padding: 24px;
   text-align: center;
-  color: var(--argyros-text-dim);
+  color: var(--vulcx-text-dim);
   font-size: 14px;
 }
 `;

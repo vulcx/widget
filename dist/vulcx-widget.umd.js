@@ -1,52 +1,52 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
     typeof define === 'function' && define.amd ? define(['exports'], factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.ArgyrosWidget = {}));
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.VulcxWidget = {}));
 })(this, (function (exports) { 'use strict';
 
-    class ArgyrosError extends Error {
+    class VulcxError extends Error {
         constructor(message, statusCode, body) {
             super(message);
             this.statusCode = statusCode;
             this.body = body;
-            this.name = "ArgyrosError";
+            this.name = "VulcxError";
         }
     }
-    class RateLimitError extends ArgyrosError {
+    class RateLimitError extends VulcxError {
         constructor(body) {
             super("Rate limit exceeded", 429, body);
             this.name = "RateLimitError";
         }
     }
-    class NoRouteError extends ArgyrosError {
+    class NoRouteError extends VulcxError {
         constructor(body) {
             super("No route found", 404, body);
             this.name = "NoRouteError";
         }
     }
-    class BadRequestError extends ArgyrosError {
+    class BadRequestError extends VulcxError {
         constructor(message, body) {
             super(message, 400, body);
             this.name = "BadRequestError";
         }
     }
-    class AuthError extends ArgyrosError {
+    class AuthError extends VulcxError {
         constructor(body) {
             super("Invalid or missing API key", 401, body);
             this.name = "AuthError";
         }
     }
-    class ServerError extends ArgyrosError {
+    class ServerError extends VulcxError {
         constructor(message, body) {
             super(message, 500, body);
             this.name = "ServerError";
         }
     }
 
-    const DEFAULT_BASE_URL = "https://api.argyros.xyz";
+    const DEFAULT_BASE_URL = "https://api.vulcx.xyz";
     const DEFAULT_TIMEOUT = 30000;
     const DEFAULT_RETRIES = 2;
-    class ArgyrosSDK {
+    class VulcxSDK {
         constructor(config) {
             if (!config.apiKey)
                 throw new Error("apiKey is required");
@@ -120,14 +120,14 @@
                                 lastError = new ServerError(errMsg, errBody);
                                 continue;
                             }
-                            throw new ArgyrosError(errMsg, res.status, errBody);
+                            throw new VulcxError(errMsg, res.status, errBody);
                     }
                 }
                 catch (err) {
                     if (err instanceof AuthError ||
                         err instanceof BadRequestError ||
                         err instanceof NoRouteError ||
-                        err instanceof ArgyrosError) {
+                        err instanceof VulcxError) {
                         throw err;
                     }
                     lastError = err;
@@ -141,22 +141,22 @@
     }
 
     const CSS_VARS = {
-        "--argyros-bg": "#0c0c10",
-        "--argyros-surface": "#151519",
-        "--argyros-surface-hover": "#1e1e25",
-        "--argyros-border": "#252530",
-        "--argyros-text": "#e8e8ed",
-        "--argyros-text-secondary": "#7a7a8a",
-        "--argyros-text-dim": "#555565",
-        "--argyros-accent": "#c8ff00",
-        "--argyros-accent-hover": "#d4ff33",
-        "--argyros-error": "#ff4d6a",
-        "--argyros-warning": "#ffaa00",
-        "--argyros-success": "#00d68f",
-        "--argyros-radius": "20px",
-        "--argyros-radius-sm": "14px",
-        "--argyros-badge-bg": "#0a0a0e",
-        "--argyros-font": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+        "--vulcx-bg": "#0c0c10",
+        "--vulcx-surface": "#151519",
+        "--vulcx-surface-hover": "#1e1e25",
+        "--vulcx-border": "#252530",
+        "--vulcx-text": "#e8e8ed",
+        "--vulcx-text-secondary": "#7a7a8a",
+        "--vulcx-text-dim": "#555565",
+        "--vulcx-accent": "#c8ff00",
+        "--vulcx-accent-hover": "#d4ff33",
+        "--vulcx-error": "#ff4d6a",
+        "--vulcx-warning": "#ffaa00",
+        "--vulcx-success": "#00d68f",
+        "--vulcx-radius": "20px",
+        "--vulcx-radius-sm": "14px",
+        "--vulcx-badge-bg": "#0a0a0e",
+        "--vulcx-font": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
     };
 
     const defaultVars = Object.entries(CSS_VARS)
@@ -166,22 +166,22 @@
 :host {
   ${defaultVars}
   display: block;
-  font-family: var(--argyros-font);
-  color: var(--argyros-text);
+  font-family: var(--vulcx-font);
+  color: var(--vulcx-text);
   box-sizing: border-box;
 }
 
 :host([theme="light"]) {
-  --argyros-bg: #ffffff;
-  --argyros-surface: #f5f5f7;
-  --argyros-surface-hover: #ebebef;
-  --argyros-border: #d4d4dc;
-  --argyros-text: #1a1a2e;
-  --argyros-text-secondary: #6b6b7a;
-  --argyros-text-dim: #9a9aaa;
-  --argyros-accent: #1a1a2e;
-  --argyros-accent-hover: #2d2d45;
-  --argyros-badge-bg: #e8e8ed;
+  --vulcx-bg: #ffffff;
+  --vulcx-surface: #f5f5f7;
+  --vulcx-surface-hover: #ebebef;
+  --vulcx-border: #d4d4dc;
+  --vulcx-text: #1a1a2e;
+  --vulcx-text-secondary: #6b6b7a;
+  --vulcx-text-dim: #9a9aaa;
+  --vulcx-accent: #1a1a2e;
+  --vulcx-accent-hover: #2d2d45;
+  --vulcx-badge-bg: #e8e8ed;
 }
 
 *, *::before, *::after {
@@ -191,8 +191,8 @@
 }
 
 .swap-container {
-  background: var(--argyros-bg);
-  border-radius: var(--argyros-radius);
+  background: var(--vulcx-bg);
+  border-radius: var(--vulcx-radius);
   padding: 12px;
   max-width: 460px;
   width: 100%;
@@ -200,15 +200,15 @@
 
 /* ── Token Panel ── */
 .token-panel {
-  background: var(--argyros-surface);
-  border-radius: var(--argyros-radius-sm);
+  background: var(--vulcx-surface);
+  border-radius: var(--vulcx-radius-sm);
   padding: 18px 18px 14px;
   margin-bottom: 4px;
 }
 
 .token-panel-label {
   font-size: 13px;
-  color: var(--argyros-text-secondary);
+  color: var(--vulcx-text-secondary);
   margin-bottom: 10px;
 }
 
@@ -226,13 +226,13 @@
   outline: none;
   font-size: 36px;
   font-weight: 500;
-  color: var(--argyros-text);
-  font-family: var(--argyros-font);
+  color: var(--vulcx-text);
+  font-family: var(--vulcx-font);
   min-width: 0;
 }
 
 .amount-input::placeholder {
-  color: var(--argyros-text-dim);
+  color: var(--vulcx-text-dim);
   font-weight: 400;
 }
 
@@ -245,21 +245,21 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: var(--argyros-badge-bg);
-  border: 1px solid var(--argyros-border);
+  background: var(--vulcx-badge-bg);
+  border: 1px solid var(--vulcx-border);
   border-radius: 24px;
   padding: 6px 14px 6px 6px;
   cursor: pointer;
   font-size: 17px;
   font-weight: 700;
-  color: var(--argyros-text);
+  color: var(--vulcx-text);
   white-space: nowrap;
   transition: background 0.15s;
   height: 44px;
 }
 
 .token-badge:hover {
-  background: var(--argyros-surface-hover);
+  background: var(--vulcx-surface-hover);
 }
 
 .token-icon {
@@ -274,7 +274,7 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: var(--argyros-border);
+  background: var(--vulcx-border);
   flex-shrink: 0;
 }
 
@@ -288,7 +288,7 @@
 /* ── USD Value ── */
 .usd-value {
   font-size: 13px;
-  color: var(--argyros-text-secondary);
+  color: var(--vulcx-text-secondary);
   margin-top: 6px;
   font-family: 'SF Mono', 'Fira Code', monospace;
 }
@@ -300,7 +300,7 @@
   align-items: center;
   margin-top: 10px;
   padding-top: 10px;
-  border-top: 1px solid var(--argyros-border);
+  border-top: 1px solid var(--vulcx-border);
 }
 
 .balance-label {
@@ -308,7 +308,7 @@
   align-items: center;
   gap: 6px;
   font-size: 13px;
-  color: var(--argyros-text-secondary);
+  color: var(--vulcx-text-secondary);
 }
 
 .balance-label svg {
@@ -327,17 +327,17 @@
   font-weight: 600;
   padding: 4px 12px;
   border-radius: 8px;
-  border: 1px solid var(--argyros-border);
-  background: var(--argyros-surface-hover);
-  color: var(--argyros-text-secondary);
+  border: 1px solid var(--vulcx-border);
+  background: var(--vulcx-surface-hover);
+  color: var(--vulcx-text-secondary);
   cursor: pointer;
-  font-family: var(--argyros-font);
+  font-family: var(--vulcx-font);
   transition: background 0.15s, color 0.15s;
 }
 
 .half-max-btn:hover {
-  background: var(--argyros-border);
-  color: var(--argyros-text);
+  background: var(--vulcx-border);
+  color: var(--vulcx-text);
 }
 
 /* ── Swap Direction ── */
@@ -353,9 +353,9 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border: 4px solid var(--argyros-bg);
-  background: var(--argyros-surface);
-  color: var(--argyros-text);
+  border: 4px solid var(--vulcx-bg);
+  background: var(--vulcx-surface);
+  color: var(--vulcx-text);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -364,7 +364,7 @@
 }
 
 .swap-direction-btn:hover {
-  background: var(--argyros-surface-hover);
+  background: var(--vulcx-surface-hover);
   transform: rotate(180deg);
 }
 
@@ -378,20 +378,20 @@
   width: 100%;
   padding: 18px;
   border: none;
-  border-radius: var(--argyros-radius-sm);
-  background: var(--argyros-accent);
+  border-radius: var(--vulcx-radius-sm);
+  background: var(--vulcx-accent);
   color: #0a0a0f;
   font-size: 17px;
   font-weight: 700;
   cursor: pointer;
   margin-top: 10px;
-  font-family: var(--argyros-font);
+  font-family: var(--vulcx-font);
   transition: background 0.15s, opacity 0.15s;
   letter-spacing: -0.2px;
 }
 
 .swap-btn:hover:not(:disabled) {
-  background: var(--argyros-accent-hover);
+  background: var(--vulcx-accent-hover);
 }
 
 .swap-btn:disabled {
@@ -406,24 +406,24 @@
   gap: 10px;
   margin-top: 10px;
   padding: 10px 14px;
-  background: var(--argyros-surface);
-  border-radius: var(--argyros-radius-sm);
+  background: var(--vulcx-surface);
+  border-radius: var(--vulcx-radius-sm);
   font-size: 13px;
-  color: var(--argyros-text-secondary);
+  color: var(--vulcx-text-secondary);
   cursor: pointer;
   transition: background 0.15s;
   position: relative;
 }
 
 .quote-bar:hover {
-  background: var(--argyros-surface-hover);
+  background: var(--vulcx-surface-hover);
 }
 
 .quote-bar-tag {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: var(--argyros-accent);
+  color: var(--vulcx-accent);
   font-weight: 600;
   flex-shrink: 0;
 }
@@ -436,11 +436,11 @@
 .quote-bar-fee {
   padding: 2px 8px;
   border-radius: 6px;
-  background: var(--argyros-badge-bg);
-  border: 1px solid var(--argyros-border);
+  background: var(--vulcx-badge-bg);
+  border: 1px solid var(--vulcx-border);
   font-size: 12px;
   font-weight: 600;
-  color: var(--argyros-text);
+  color: var(--vulcx-text);
   flex-shrink: 0;
 }
 
@@ -451,37 +451,37 @@
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 12px;
-  color: var(--argyros-text-secondary);
+  color: var(--vulcx-text-secondary);
 }
 
 .quote-bar-info {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1.5px solid var(--argyros-border);
+  border: 1.5px solid var(--vulcx-border);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: var(--argyros-text-dim);
+  color: var(--vulcx-text-dim);
   font-size: 12px;
   font-weight: 700;
   transition: border-color 0.15s, color 0.15s;
 }
 
 .quote-bar:hover .quote-bar-info {
-  border-color: var(--argyros-text-secondary);
-  color: var(--argyros-text);
+  border-color: var(--vulcx-text-secondary);
+  color: var(--vulcx-text);
 }
 
 /* ── Quote Detail Panel ── */
 .quote-detail {
   margin-top: 6px;
   padding: 12px 14px;
-  background: var(--argyros-surface);
-  border-radius: var(--argyros-radius-sm);
+  background: var(--vulcx-surface);
+  border-radius: var(--vulcx-radius-sm);
   font-size: 12px;
-  color: var(--argyros-text-secondary);
+  color: var(--vulcx-text-secondary);
 }
 
 .quote-detail-row {
@@ -495,11 +495,11 @@
 }
 
 .impact-warning {
-  color: var(--argyros-warning);
+  color: var(--vulcx-warning);
 }
 
 .impact-high {
-  color: var(--argyros-error);
+  color: var(--vulcx-error);
 }
 
 /* ── Status Messages ── */
@@ -508,8 +508,8 @@
   padding: 10px 14px;
   background: rgba(255, 77, 106, 0.08);
   border: 1px solid rgba(255, 77, 106, 0.15);
-  border-radius: var(--argyros-radius-sm);
-  color: var(--argyros-error);
+  border-radius: var(--vulcx-radius-sm);
+  color: var(--vulcx-error);
   font-size: 13px;
 }
 
@@ -518,8 +518,8 @@
   padding: 10px 14px;
   background: rgba(0, 214, 143, 0.08);
   border: 1px solid rgba(0, 214, 143, 0.15);
-  border-radius: var(--argyros-radius-sm);
-  color: var(--argyros-success);
+  border-radius: var(--vulcx-radius-sm);
+  color: var(--vulcx-success);
   font-size: 13px;
 }
 
@@ -527,7 +527,7 @@
   display: inline-block;
   width: 16px;
   height: 16px;
-  border: 2px solid var(--argyros-text-secondary);
+  border: 2px solid var(--vulcx-text-secondary);
   border-top-color: transparent;
   border-radius: 50%;
   animation: spin 0.6s linear infinite;
@@ -552,9 +552,9 @@
 }
 
 .modal-panel {
-  background: var(--argyros-surface);
-  border: 1px solid var(--argyros-border);
-  border-radius: var(--argyros-radius);
+  background: var(--vulcx-surface);
+  border: 1px solid var(--vulcx-border);
+  border-radius: var(--vulcx-radius);
   width: 420px;
   max-width: 95vw;
   max-height: 520px;
@@ -572,7 +572,7 @@
   height: 28px;
   border: none;
   background: transparent;
-  color: var(--argyros-text-secondary);
+  color: var(--vulcx-text-secondary);
   cursor: pointer;
   font-size: 20px;
   display: flex;
@@ -583,29 +583,29 @@
 }
 
 .modal-close:hover {
-  background: var(--argyros-surface-hover);
-  color: var(--argyros-text);
+  background: var(--vulcx-surface-hover);
+  color: var(--vulcx-text);
 }
 
 .modal-search {
   margin: 16px 16px 0;
   padding: 14px 16px;
-  background: var(--argyros-bg);
-  border: 1px solid var(--argyros-border);
-  border-radius: var(--argyros-radius-sm);
-  color: var(--argyros-text);
+  background: var(--vulcx-bg);
+  border: 1px solid var(--vulcx-border);
+  border-radius: var(--vulcx-radius-sm);
+  color: var(--vulcx-text);
   font-size: 15px;
-  font-family: var(--argyros-font);
+  font-family: var(--vulcx-font);
   outline: none;
   transition: border-color 0.15s;
 }
 
 .modal-search::placeholder {
-  color: var(--argyros-text-dim);
+  color: var(--vulcx-text-dim);
 }
 
 .modal-search:focus {
-  border-color: var(--argyros-text-secondary);
+  border-color: var(--vulcx-text-secondary);
 }
 
 .popular-chips {
@@ -621,20 +621,20 @@
   gap: 6px;
   padding: 6px 14px 6px 6px;
   border-radius: 20px;
-  border: 1px solid var(--argyros-border);
-  background: var(--argyros-bg);
-  color: var(--argyros-text);
+  border: 1px solid var(--vulcx-border);
+  background: var(--vulcx-bg);
+  color: var(--vulcx-text);
   font-size: 14px;
   font-weight: 600;
-  font-family: var(--argyros-font);
+  font-family: var(--vulcx-font);
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
   white-space: nowrap;
 }
 
 .popular-chip:hover {
-  background: var(--argyros-surface-hover);
-  border-color: var(--argyros-text-secondary);
+  background: var(--vulcx-surface-hover);
+  border-color: var(--vulcx-text-secondary);
 }
 
 .popular-chip img {
@@ -658,7 +658,7 @@
 }
 
 .token-list::-webkit-scrollbar-thumb {
-  background: var(--argyros-border);
+  background: var(--vulcx-border);
   border-radius: 2px;
 }
 
@@ -673,7 +673,7 @@
 }
 
 .token-list-item:hover {
-  background: var(--argyros-surface-hover);
+  background: var(--vulcx-surface-hover);
 }
 
 .tli-icon {
@@ -688,7 +688,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--argyros-border);
+  background: var(--vulcx-border);
   flex-shrink: 0;
 }
 
@@ -700,12 +700,12 @@
 .tli-symbol {
   font-size: 16px;
   font-weight: 700;
-  color: var(--argyros-text);
+  color: var(--vulcx-text);
 }
 
 .tli-name {
   font-size: 12px;
-  color: var(--argyros-text-secondary);
+  color: var(--vulcx-text-secondary);
   margin-top: 1px;
 }
 
@@ -714,7 +714,7 @@
   align-items: center;
   gap: 4px;
   font-size: 11px;
-  color: var(--argyros-text-dim);
+  color: var(--vulcx-text-dim);
   margin-top: 2px;
 }
 
@@ -733,19 +733,19 @@
 .tli-balance-amount {
   font-size: 15px;
   font-weight: 600;
-  color: var(--argyros-text);
+  color: var(--vulcx-text);
 }
 
 .tli-balance-usd {
   font-size: 12px;
-  color: var(--argyros-text-secondary);
+  color: var(--vulcx-text-secondary);
   margin-top: 1px;
 }
 
 .token-list-empty {
   padding: 24px;
   text-align: center;
-  color: var(--argyros-text-dim);
+  color: var(--vulcx-text-dim);
   font-size: 14px;
 }
 `;
@@ -851,7 +851,7 @@
         "So11111111111111111111111111111111111111112",
         "uSd2czE61Evaf76RNbq4KPpXnkiL3irdzgLFUMe3NoG",
     ];
-    class ArgyrosSwapElement extends HTMLElement {
+    class VulcxSwapElement extends HTMLElement {
         static get observedAttributes() {
             return [
                 "api-key", "chain", "base-url",
@@ -875,7 +875,7 @@
             const inputMint = this.getAttribute("default-input-mint") || "";
             const outputMint = this.getAttribute("default-output-mint") || "";
             this.rpcUrl = this.getAttribute("rpc-url") || DEFAULT_RPC;
-            this.sdk = new ArgyrosSDK({ apiKey, chain, baseUrl });
+            this.sdk = new VulcxSDK({ apiKey, chain, baseUrl });
             this.store = new Store(createInitialState(inputMint, outputMint));
             this.unsubscribe = this.store.subscribe(() => this.update());
             this.mount();
@@ -894,14 +894,14 @@
             const chain = this.getAttribute("chain") || "solana";
             const baseUrl = this.getAttribute("base-url") || undefined;
             this.rpcUrl = this.getAttribute("rpc-url") || DEFAULT_RPC;
-            this.sdk = new ArgyrosSDK({ apiKey, chain, baseUrl });
+            this.sdk = new VulcxSDK({ apiKey, chain, baseUrl });
         }
         emit(name, detail) {
             this.dispatchEvent(new CustomEvent(name, { detail, bubbles: true, composed: true }));
         }
         async loadTokenList() {
             try {
-                const baseUrl = this.getAttribute("base-url") || "https://api.argyros.xyz";
+                const baseUrl = this.getAttribute("base-url") || "https://api.vulcx.xyz";
                 const res = await fetch(`${baseUrl}/api/v1/tokens`);
                 if (!res.ok)
                     return;
@@ -1385,11 +1385,11 @@
         }
     }
 
-    if (typeof customElements !== "undefined" && !customElements.get("argyros-swap")) {
-        customElements.define("argyros-swap", ArgyrosSwapElement);
+    if (typeof customElements !== "undefined" && !customElements.get("vulcx-swap")) {
+        customElements.define("vulcx-swap", VulcxSwapElement);
     }
 
-    exports.ArgyrosSwapElement = ArgyrosSwapElement;
+    exports.VulcxSwapElement = VulcxSwapElement;
 
 }));
-//# sourceMappingURL=argyros-widget.umd.js.map
+//# sourceMappingURL=vulcx-widget.umd.js.map
