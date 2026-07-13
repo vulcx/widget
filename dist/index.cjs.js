@@ -47,7 +47,6 @@ class VulcxSDK {
         if (!config.apiKey)
             throw new Error("apiKey is required");
         this.apiKey = config.apiKey;
-        this.chain = config.chain ?? "solana";
         this.baseUrl = (config.baseUrl ?? DEFAULT_BASE_URL).replace(/\/+$/, "");
         this.timeout = config.timeout ?? DEFAULT_TIMEOUT;
         this.retries = config.retries ?? DEFAULT_RETRIES;
@@ -71,8 +70,7 @@ class VulcxSDK {
         return this.request("POST", "/api/v1/instructions", params);
     }
     async request(method, path, body) {
-        const separator = path.includes("?") ? "&" : "?";
-        const url = `${this.baseUrl}${path}${separator}chain=${this.chain}`;
+        const url = `${this.baseUrl}${path}`;
         const headers = {
             Authorization: `Bearer ${this.apiKey}`,
             Accept: "application/json",
@@ -859,7 +857,7 @@ const POPULAR_MINTS = [
 class VulcxSwapElement extends HTMLElement {
     static get observedAttributes() {
         return [
-            "api-key", "chain", "base-url",
+            "api-key", "base-url",
             "default-input-mint", "default-output-mint",
             "theme", "rpc-url",
         ];
@@ -875,12 +873,11 @@ class VulcxSwapElement extends HTMLElement {
     }
     connectedCallback() {
         const apiKey = this.getAttribute("api-key") || "";
-        const chain = this.getAttribute("chain") || "solana";
         const baseUrl = this.getAttribute("base-url") || undefined;
         const inputMint = this.getAttribute("default-input-mint") || "";
         const outputMint = this.getAttribute("default-output-mint") || "";
         this.rpcUrl = this.getAttribute("rpc-url") || DEFAULT_RPC;
-        this.sdk = new VulcxSDK({ apiKey, chain, baseUrl });
+        this.sdk = new VulcxSDK({ apiKey, baseUrl });
         this.store = new Store(createInitialState(inputMint, outputMint));
         this.unsubscribe = this.store.subscribe(() => this.update());
         this.mount();
@@ -896,10 +893,9 @@ class VulcxSwapElement extends HTMLElement {
         if (!this.store)
             return;
         const apiKey = this.getAttribute("api-key") || "";
-        const chain = this.getAttribute("chain") || "solana";
         const baseUrl = this.getAttribute("base-url") || undefined;
         this.rpcUrl = this.getAttribute("rpc-url") || DEFAULT_RPC;
-        this.sdk = new VulcxSDK({ apiKey, chain, baseUrl });
+        this.sdk = new VulcxSDK({ apiKey, baseUrl });
     }
     emit(name, detail) {
         this.dispatchEvent(new CustomEvent(name, { detail, bubbles: true, composed: true }));

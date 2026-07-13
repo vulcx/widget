@@ -1,5 +1,5 @@
 import { VulcxSDK } from "@vulcx/sdk";
-import type { Chain, QuoteResponse, SwapResponse } from "@vulcx/sdk";
+import type { QuoteResponse, SwapResponse } from "@vulcx/sdk";
 import { WIDGET_CSS } from "./ui/styles";
 import { Store, createInitialState } from "./state/store";
 import type { WidgetState, TokenInfo, SelectorTarget } from "./state/store";
@@ -33,7 +33,7 @@ export class VulcxSwapElement extends HTMLElement {
 
   static get observedAttributes(): string[] {
     return [
-      "api-key", "chain", "base-url",
+      "api-key", "base-url",
       "default-input-mint", "default-output-mint",
       "theme", "rpc-url",
     ];
@@ -46,13 +46,12 @@ export class VulcxSwapElement extends HTMLElement {
 
   connectedCallback(): void {
     const apiKey = this.getAttribute("api-key") || "";
-    const chain = (this.getAttribute("chain") as Chain) || "solana";
     const baseUrl = this.getAttribute("base-url") || undefined;
     const inputMint = this.getAttribute("default-input-mint") || "";
     const outputMint = this.getAttribute("default-output-mint") || "";
     this.rpcUrl = this.getAttribute("rpc-url") || DEFAULT_RPC;
 
-    this.sdk = new VulcxSDK({ apiKey, chain, baseUrl });
+    this.sdk = new VulcxSDK({ apiKey, baseUrl });
     this.store = new Store(createInitialState(inputMint, outputMint));
     this.unsubscribe = this.store.subscribe(() => this.update());
     this.mount();
@@ -68,10 +67,9 @@ export class VulcxSwapElement extends HTMLElement {
   attributeChangedCallback(): void {
     if (!this.store) return;
     const apiKey = this.getAttribute("api-key") || "";
-    const chain = (this.getAttribute("chain") as Chain) || "solana";
     const baseUrl = this.getAttribute("base-url") || undefined;
     this.rpcUrl = this.getAttribute("rpc-url") || DEFAULT_RPC;
-    this.sdk = new VulcxSDK({ apiKey, chain, baseUrl });
+    this.sdk = new VulcxSDK({ apiKey, baseUrl });
   }
 
   private emit(name: string, detail: unknown): void {

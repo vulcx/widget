@@ -23,7 +23,6 @@ Or via CDN (no build step needed):
 
 <vulcx-swap
   api-key="vulcx_your_api_key"
-  chain="solana"
   default-input-mint="So11111111111111111111111111111111111111112"
   default-output-mint="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
   theme="dark"
@@ -39,7 +38,6 @@ function App() {
   return (
     <vulcx-swap
       api-key="vulcx_your_api_key"
-      chain="solana"
       default-input-mint="So11111111111111111111111111111111111111112"
       default-output-mint="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
       theme="dark"
@@ -56,7 +54,6 @@ declare namespace JSX {
     "vulcx-swap": React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLElement> & {
         "api-key"?: string;
-        chain?: string;
         "default-input-mint"?: string;
         "default-output-mint"?: string;
         theme?: "dark" | "light";
@@ -73,7 +70,6 @@ declare namespace JSX {
 <template>
   <vulcx-swap
     api-key="vulcx_your_api_key"
-    chain="solana"
     default-input-mint="So11111111111111111111111111111111111111112"
     default-output-mint="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
     theme="dark"
@@ -111,7 +107,6 @@ export default function SwapWidget() {
     <vulcx-swap
       ref={ref}
       api-key="vulcx_your_api_key"
-      chain="solana"
       theme="dark"
     />
   );
