@@ -24,7 +24,7 @@ Or via CDN (no build step needed):
 <vulcx-swap
   api-key="vulcx_your_api_key"
   default-input-mint="So11111111111111111111111111111111111111112"
-  default-output-mint="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+  default-output-mint="uSd2czE61Evaf76RNbq4KPpXnkiL3irdzgLFUMe3NoG"
   theme="dark"
 ></vulcx-swap>
 ```
@@ -39,7 +39,7 @@ function App() {
     <vulcx-swap
       api-key="vulcx_your_api_key"
       default-input-mint="So11111111111111111111111111111111111111112"
-      default-output-mint="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+      default-output-mint="uSd2czE61Evaf76RNbq4KPpXnkiL3irdzgLFUMe3NoG"
       theme="dark"
     />
   );
@@ -71,7 +71,7 @@ declare namespace JSX {
   <vulcx-swap
     api-key="vulcx_your_api_key"
     default-input-mint="So11111111111111111111111111111111111111112"
-    default-output-mint="EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"
+    default-output-mint="uSd2czE61Evaf76RNbq4KPpXnkiL3irdzgLFUMe3NoG"
     theme="dark"
     @quote-update="onQuote"
     @swap-complete="onSwap"
@@ -118,7 +118,6 @@ export default function SwapWidget() {
 | Attribute             | Type               | Default    | Description                    |
 | --------------------- | ------------------ | ---------- | ------------------------------ |
 | `api-key`             | `string`           | —          | **Required.** Your API key     |
-| `chain`               | `"solana"\|"fogo"` | `"solana"` | Target chain                   |
 | `base-url`            | `string`           | Production | API base URL override          |
 | `default-input-mint`  | `string`           | —          | Pre-selected input token mint  |
 | `default-output-mint` | `string`           | —          | Pre-selected output token mint |
