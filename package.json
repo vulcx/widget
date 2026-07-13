@@ -23,7 +23,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@vulcx/sdk": "file:../sdk"
+    "@vulcx/sdk": "^0.2.0"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^16.0.1",
